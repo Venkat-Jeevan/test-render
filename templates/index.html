@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Task Manager</h1>
+            <p class="subtitle">Let AI help you organize your tasks</p>
+        </header>
+
+        <div class="task-input-container">
+            <div class="task-input-row">
+                <input type="text" id="taskInput" placeholder="Enter your task...">
+                <button id="addTask">Add Task</button>
+            </div>
+            <div class="timing-preference">
+                <label>Timing Preference:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="timingPreference" value="ai" checked>
+                        AI Suggested Time
+                    </label>
+                    <label>
+                        <input type="radio" name="timingPreference" value="custom">
+                        Custom Time
+                    </label>
+                </div>
+            </div>
+            <div id="customTimeInputs" class="custom-time-inputs" style="display: none;">
+                <input type="time" id="customStartTime" placeholder="Start Time">
+                <input type="time" id="customEndTime" placeholder="End Time">
+            </div>
+        </div>
+
+        <div class="view-controls">
+            <button type="button" class="view-toggle-btn">
+                <span class="current-view">Matrix View</span>
+                <span class="view-icon">📊</span>
+            </button>
+        </div>
+
+        <div id="taskList" class="task-list">
+            <div class="tasks-header">
+                <h2>Your Tasks</h2>
+                <div class="filter-container">
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="morning session">Morning Session</option>
+                        <option value="afternoon session">Afternoon Session</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                        <option value="communication">Communication</option>
+                    </select>
+                </div>
+            </div>
+            <ul id="taskListItems"></ul>
+        </div>
+
+        <div id="priorityMatrix" class="priority-matrix">
+            <h2>Priority Matrix</h2>
+            <div class="matrix-grid">
+                <div id="highHighTasks" class="matrix-cell">
+                    <h3>Most Important & Most Urgent</h3>
+                    <div class="matrix-tasks"></div>
+                </div>
+                <div id="highLowTasks" class="matrix-cell">
+                    <h3>Most Important & Less Urgent</h3>
+                    <div class="matrix-tasks"></div>
+                </div>
+                <div id="lowHighTasks" class="matrix-cell">
+                    <h3>Less Important & Most Urgent</h3>
+                    <div class="matrix-tasks"></div>
+                </div>
+                <div id="lowLowTasks" class="matrix-cell">
+                    <h3>Less Important & Less Urgent</h3>
+                    <div class="matrix-tasks"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
